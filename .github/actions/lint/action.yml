@@ -54,13 +54,13 @@ runs:
   - name: Upload terrascan SARIF file
     uses: github/codeql-action/upload-sarif@v2
     with:
-      sarif_file: terrascan.sarif
-      # github-token: ${{ secrets.GITHUB_TOKEN }}
-  - name: Upload terrascan SARIF file
-    uses: github/codeql-action/upload-sarif@v2
-    with:
       sarif_file: reports/results.sarif
       # github-token: ${{ secrets.GITHUB_TOKEN }}
+  # - name: Upload terrascan SARIF file
+  #   uses: github/codeql-action/upload-sarif@v2
+  #   with:
+  #     sarif_file: reports/results.sarif
+  # github-token: ${{ secrets.GITHUB_TOKEN }}
   # with:
   #    include: example_custom_rule
 
