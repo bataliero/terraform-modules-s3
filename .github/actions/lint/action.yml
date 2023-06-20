@@ -1,0 +1,72 @@
+name: 'Static Analysis'
+description: 'Run static analysis for terraform'
+# inputs:
+#   terraform-directory: # id of input
+#     description: 'Who to greet'
+#     # required: true
+#     default: '.'
+# outputs:
+#   random-number:
+#     description: "Random number"
+#     value: ${{ steps.random-number-generator.outputs.random-number }}
+runs:
+  using: "composite"
+
+  steps:
+
+  - name: Test with Checkov
+    id: checkov
+    uses: bridgecrewio/checkov-action@v12.1346.0
+    with:
+      # directory: .
+      framework: terraform
+      soft_fail: true
+      output_format: sarif
+      output_file_path: reports/results.sarif
+      # version: 2.3.245
+      # 2.0.929
+  - name: tfsec
+    uses: aquasecurity/tfsec-action@v1.0.3
+    with:
+      # version: v1.28
+      soft_fail: true
+  # - name: tfsec
+  #   uses: aquasecurity/tfsec-action@v1.0.0
+  #   with:
+  #     soft_fail: true
+  # - name: terrascan
+  #   uses: tenable/terrascan-action@main
+  #   with:
+  #     iac_type: 'terraform'
+  #     iac_version: 'v14'
+  #     policy_type: 'aws'
+  #     only_warn: true
+  # - name: Regula Terraform
+  #   uses: fugue/regula-action@v3.2.1
+  # # Upload 
+  # - name: Upload terrascan SARIF file
+  #   uses: github/codeql-action/upload-sarif@v1
+  #   with:
+  #     sarif_file: terrascan.sarif
+  # - name: Upload terrascan SARIF file
+  #   uses: github/codeql-action/upload-sarif@v1
+  #   with:
+  #     sarif_file: reports/results.sarif
+  # with:
+  #    include: example_custom_rule
+
+  # - name: Linting
+  #   shell: bash
+  #   run: |
+  #     tfsec
+  #     tflint
+
+  # - run: echo Hello ${{ inputs.who-to-greet }}.
+  #   shell: bash
+  # - id: random-number-generator
+  #   run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
+  #   shell: bash
+  # - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+  #   shell: bash
+  # - run: goodbye.sh
+  #   shell: bash

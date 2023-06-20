@@ -1,0 +1,12 @@
+on: [push]
+
+jobs:
+  static-analysis:
+    runs-on: ubuntu-latest
+    name: Static Analysis
+    steps:
+    - uses: actions/checkout@v3
+    - id: foo
+      uses: ./.github/actions/lint
+      with:
+        terraform-directory: '.'
