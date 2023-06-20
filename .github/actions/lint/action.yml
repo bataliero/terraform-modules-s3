@@ -73,9 +73,9 @@ runs:
   - name: Display structure of downloaded files
     shell: bash
     run: |
-      ls -R
-      mv terrascan.sarif sarif_dir/
-      ls -R
+      ls -lR
+      cp terrascan.sarif sarif_dir/ts.sarif
+      ls -lR
 
   #     github_token: ${{ secrets.GITHUB_TOKEN }}
   - name: Upload terrascan SARIF file
