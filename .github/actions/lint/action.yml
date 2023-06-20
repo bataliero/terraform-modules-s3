@@ -45,16 +45,16 @@ runs:
   # - name: Regula Terraform
   #   uses: fugue/regula-action@v3.2.1
   # # Upload 
-  # - name: tfsec
-  #   uses: tfsec/tfsec-sarif-action@v0.0.3
-  #   with:
-  #     working_directory: terraform/relevant
-  #     sarif_file: tfsec.sarif
+  - name: tfsec
+    uses: tfsec/tfsec-sarif-action@v0.0.3
+    with:
+      # working_directory: terraform/relevant
+      sarif_file: tfsec.sarif
   #     github_token: ${{ secrets.GITHUB_TOKEN }}
   - name: Upload terrascan SARIF file
     uses: github/codeql-action/upload-sarif@v2
     with:
-      sarif_file: results1.sarif
+      sarif_file: tfsec.sarif
       # github-token: ${{ secrets.GITHUB_TOKEN }}
   # - name: Upload terrascan SARIF file
   #   uses: github/codeql-action/upload-sarif@v2
