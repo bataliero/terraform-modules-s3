@@ -31,7 +31,7 @@ runs:
     with:
       # version: v1.28
       soft_fail: true
-      sarif_file: sarif_dir/tfsec.sarif
+      sarif_file: tfsec.sarif
   # - name: tfsec
   #   uses: aquasecurity/tfsec-action@v1.0.0
   #   with:
@@ -54,7 +54,9 @@ runs:
 
   - name: Display structure of downloaded files
     shell: bash
-    run: ls -R
+    run: |
+      ls -R
+      mv tfsec.sarif sarif_dir/
   #     github_token: ${{ secrets.GITHUB_TOKEN }}
   - name: Upload terrascan SARIF file
     uses: github/codeql-action/upload-sarif@v2
