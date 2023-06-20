@@ -44,14 +44,14 @@ runs:
   # - name: Regula Terraform
   #   uses: fugue/regula-action@v3.2.1
   # # Upload 
-  # - name: Upload terrascan SARIF file
-  #   uses: github/codeql-action/upload-sarif@v1
-  #   with:
-  #     sarif_file: terrascan.sarif
-  # - name: Upload terrascan SARIF file
-  #   uses: github/codeql-action/upload-sarif@v1
-  #   with:
-  #     sarif_file: reports/results.sarif
+  - name: Upload terrascan SARIF file
+    uses: github/codeql-action/upload-sarif@v1
+    with:
+      sarif_file: terrascan.sarif
+  - name: Upload terrascan SARIF file
+    uses: github/codeql-action/upload-sarif@v1
+    with:
+      sarif_file: reports/results.sarif
   # with:
   #    include: example_custom_rule
 
