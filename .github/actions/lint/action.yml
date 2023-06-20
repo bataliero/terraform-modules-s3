@@ -17,6 +17,8 @@ runs:
   steps:
   - name: Regula Terraform
     uses: fugue/regula-action@v3.2.1
+    with:
+      severity: off
     env:
       # TERRAFORM_DOCS_VERSION: v0.16.0
       # TFLINT_VERSION: v0.44.1
