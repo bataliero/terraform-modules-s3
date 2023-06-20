@@ -15,7 +15,6 @@ runs:
   using: "composite"
 
   steps:
-
   - name: Test with Checkov
     id: checkov
     uses: bridgecrewio/checkov-action@v12.1346.0
@@ -46,6 +45,12 @@ runs:
   # - name: Regula Terraform
   #   uses: fugue/regula-action@v3.2.1
   # # Upload 
+  - name: tfsec
+    uses: tfsec/tfsec-sarif-action@v0.0.3
+    with:
+      working_directory: terraform/relevant
+      sarif_file: tfsec.sarif
+      github_token: ${{ secrets.GITHUB_TOKEN }}
   - name: Upload terrascan SARIF file
     uses: github/codeql-action/upload-sarif@v2
     with:

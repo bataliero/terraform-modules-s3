@@ -1,5 +1,14 @@
 on: [push]
 
+# permission can be added at job level or workflow level    
+permissions: write-all
+# id-token: write # This is required for requesting the JWT
+# contents: read # This is required for actions/checkout
+# pull-requests: write # todo czy to jest ptorzebne?
+# actions: read
+# permissions: write-all
+
+
 jobs:
   static-analysis:
     runs-on: ubuntu-latest
