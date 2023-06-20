@@ -45,11 +45,11 @@ runs:
   #   uses: fugue/regula-action@v3.2.1
   # # Upload 
   - name: Upload terrascan SARIF file
-    uses: github/codeql-action/upload-sarif@v1
+    uses: github/codeql-action/upload-sarif@v2
     with:
       sarif_file: terrascan.sarif
   - name: Upload terrascan SARIF file
-    uses: github/codeql-action/upload-sarif@v1
+    uses: github/codeql-action/upload-sarif@v2
     with:
       sarif_file: reports/results.sarif
   # with:
