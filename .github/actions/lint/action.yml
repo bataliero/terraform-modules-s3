@@ -27,11 +27,16 @@ runs:
       # version: 2.3.245
       # 2.0.929
   - name: tfsec
-    uses: aquasecurity/tfsec-action@main
+    uses: tfsec/tfsec-sarif-action@main
     with:
+      sarif_file: sarif_dir/tfsec.sarif
+      # - name: tfsec
+      #   uses: aquasecurity/tfsec-action@main
+      #   tfsec/tfsec-sarif-action
+      #   with:
       # version: v1.28
       soft_fail: true
-      sarif_file: tfsec.sarif
+      # sarif_file: tfsec.sarif
   # - name: tfsec
   #   uses: aquasecurity/tfsec-action@v1.0.0
   #   with:
