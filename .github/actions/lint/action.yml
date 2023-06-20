@@ -29,6 +29,7 @@ runs:
   - name: tfsec
     uses: aquasecurity/tfsec-sarif-action@v0.1.4
     with:
+      tfsec_version: latest
       soft_fail: true
       sarif_file: sarif_dir/tfsec.sarif
   # - name: tfsec
@@ -66,7 +67,6 @@ runs:
     shell: bash
     run: |
       ls -R
-      mv tfsec.sarif sarif_dir/
   #     github_token: ${{ secrets.GITHUB_TOKEN }}
   - name: Upload terrascan SARIF file
     uses: github/codeql-action/upload-sarif@v2
