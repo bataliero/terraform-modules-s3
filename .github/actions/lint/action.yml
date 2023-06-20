@@ -23,7 +23,7 @@ runs:
       framework: terraform
       soft_fail: true
       output_format: sarif
-      output_file_path: reports/results.sarif
+      output_file_path: results1.sarif
       # version: 2.3.245
       # 2.0.929
   - name: tfsec
@@ -54,7 +54,7 @@ runs:
   - name: Upload terrascan SARIF file
     uses: github/codeql-action/upload-sarif@v2
     with:
-      sarif_file: reports/results.sarif
+      sarif_file: results1.sarif
       # github-token: ${{ secrets.GITHUB_TOKEN }}
   # - name: Upload terrascan SARIF file
   #   uses: github/codeql-action/upload-sarif@v2
