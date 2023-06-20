@@ -27,7 +27,7 @@ runs:
       # version: 2.3.245
       # 2.0.929
   - name: tfsec
-    uses: aquasecurity/tfsec-action@v1.0.3
+    uses: aquasecurity/tfsec-action@main
     with:
       # version: v1.28
       soft_fail: true
