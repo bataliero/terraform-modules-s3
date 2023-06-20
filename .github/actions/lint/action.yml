@@ -58,7 +58,7 @@ runs:
   - name: Upload terrascan SARIF file
     uses: github/codeql-action/upload-sarif@v2
     with:
-      sarif_file: tfsec.sarif
+      sarif_file: results.sarif
       # github-token: ${{ secrets.GITHUB_TOKEN }}
   # - name: Upload terrascan SARIF file
   #   uses: github/codeql-action/upload-sarif@v2
