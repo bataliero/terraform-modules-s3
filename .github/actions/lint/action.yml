@@ -61,8 +61,8 @@ runs:
       iac_type: 'terraform'
       iac_version: 'v14'
       policy_type: 'aws'
+      sarif_upload: true
       only_warn: true
-      upload_sarif: true
   # # Upload 
   # - name: tfsec
   #   uses: tfsec/tfsec-sarif-action@v0.0.3
