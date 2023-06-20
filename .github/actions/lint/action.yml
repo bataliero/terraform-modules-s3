@@ -9,6 +9,8 @@ description: 'Run static analysis for terraform'
 #   random-number:
 #     description: "Random number"
 #     value: ${{ steps.random-number-generator.outputs.random-number }}
+
+# permission can be added at job level or workflow level    
 runs:
   using: "composite"
 
@@ -48,10 +50,12 @@ runs:
     uses: github/codeql-action/upload-sarif@v2
     with:
       sarif_file: terrascan.sarif
+      github-token: ${{ secrets.GITHUB_TOKEN }}
   - name: Upload terrascan SARIF file
     uses: github/codeql-action/upload-sarif@v2
     with:
       sarif_file: reports/results.sarif
+      github-token: ${{ secrets.GITHUB_TOKEN }}
   # with:
   #    include: example_custom_rule
 
