@@ -26,11 +26,12 @@ runs:
       output_file_path: sarif_dir
       # version: 2.3.245
       # 2.0.929
-  # - name: tfsec
-  #   uses: aquasecurity/tfsec-action@v1.0.3
-  #   with:
-  #     # version: v1.28
-  #     soft_fail: true
+  - name: tfsec
+    uses: aquasecurity/tfsec-action@v1.0.3
+    with:
+      # version: v1.28
+      soft_fail: true
+      sarif_file: sarif_dir/tfsec.sarif
   # - name: tfsec
   #   uses: aquasecurity/tfsec-action@v1.0.0
   #   with:
@@ -45,11 +46,11 @@ runs:
   # - name: Regula Terraform
   #   uses: fugue/regula-action@v3.2.1
   # # Upload 
-  - name: tfsec
-    uses: tfsec/tfsec-sarif-action@v0.0.3
-    with:
-      # working_directory: terraform/relevant
-      sarif_file: sarif_dir/tfsec.sarif
+  # - name: tfsec
+  #   uses: tfsec/tfsec-sarif-action@v0.0.3
+  #   with:
+  #     # working_directory: terraform/relevant
+  #     sarif_file: sarif_dir/tfsec.sarif
 
   - name: Display structure of downloaded files
     shell: bash
