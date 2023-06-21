@@ -71,3 +71,12 @@ jobs:
       uses: github/codeql-action/upload-sarif@v2
       with:
         sarif_file: terrascan.sarif
+
+  regula:
+    if: ${{ (!contains(fromJSON(inputs.skip), github.job)) }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Regula Terraform
+      uses: fugue/regula-action@v3.2.1
