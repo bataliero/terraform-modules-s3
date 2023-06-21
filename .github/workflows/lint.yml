@@ -9,12 +9,38 @@ permissions: write-all
 
 
 jobs:
-  static-analysis:
-    runs-on: ubuntu-latest
-    name: Static Analysis
-    steps:
-    - uses: actions/checkout@v3
-    - id: foo
-      uses: ./.github/actions/lint
-      with:
-        terraform-directory: '.'
+  # static-analysis:
+  #   runs-on: ubuntu-latest
+  #   name: Static Analysis
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #   - id: foo
+  #     uses: ./.github/actions/lint
+  #     with:
+  #       terraform-directory: '.'
+  
+  ci-terraform:
+    uses: ./.github/workflows/lint2.yaml
+    # uses: cloudposse/github-actions-workflows/.github/workflows/ci-terraform.yml@main
+    with:
+      suggestions: true
+      filter-mode: diff_context
+      # skip: [""]
+      skip: '["tfsec", "terrascan"]'
+      # skip: '["checkov", "tfsec", "terrascan"]'
+
+
+  # container-test-job:
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: node:14.16
+  #     env:
+  #       NODE_ENV: development
+  #     ports:
+  #     - 80
+  #     volumes:
+  #     - my_docker_volume:/volume_mount
+  #     options: --cpus 1
+  #   steps:
+  #   - name: Check for dockerenv file
+  #     run: (ls /.dockerenv && echo Found dockerenv) || (echo No dockerenv)

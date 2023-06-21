@@ -10,19 +10,29 @@ description: 'Run static analysis for terraform'
 #     description: "Random number"
 #     value: ${{ steps.random-number-generator.outputs.random-number }}
 
+
+
+
+# https://labs.sogeti.com/how-to-integrate-iac-static-analysis-tools-for-terraform/
+
 # permission can be added at job level or workflow level    
 runs:
   using: "composite"
 
   steps:
   - name: Regula Terraform
-    uses: fugue/regula-action@v3.2.1
-    with:
-      severity: off
-    env:
-      # TERRAFORM_DOCS_VERSION: v0.16.0
-      # TFLINT_VERSION: v0.44.1
-      REGULA_FORMAT: sarif
+    shell: bash
+    run: |
+      terraform workspace new dev
+
+      terraform plan -var-file dev.tfvars -input=false
+  #   uses: fugue/regula-action@v3.2.1
+  #   with:
+  #     severity: off
+  #   env:
+  #     # TERRAFORM_DOCS_VERSION: v0.16.0
+  #     # TFLINT_VERSION: v0.44.1
+  #     REGULA_FORMAT: sarif
   - name: Test with Checkov
     id: checkov
     uses: bridgecrewio/checkov-action@master #v12.1346.0
