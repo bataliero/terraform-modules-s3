@@ -7,20 +7,18 @@ permissions: write-all
 # pull-requests: write # todo czy to jest ptorzebne?
 # actions: read
 
-
 jobs:
-  # static-analysis:
-  #   runs-on: ubuntu-latest
-  #   name: Static Analysis
-  #   steps:
-  #   - uses: actions/checkout@v3
-  #   - id: foo
-  #     uses: ./.github/actions/lint
-  #     with:
-  #       terraform-directory: '.'
+  static-analysis:
+    runs-on: ubuntu-latest
+    name: Static Analysis
+    steps:
+    - uses: actions/checkout@v3
+    - id: foo
+      uses: ./.github/actions/lint
   
   ci-terraform:
     uses: ./.github/workflows/lint2.yaml
+
     # uses: cloudposse/github-actions-workflows/.github/workflows/ci-terraform.yml@main
     # with:
       # skip: [""]

@@ -48,6 +48,8 @@ jobs:
       with:
         tfsec_version: latest
         sarif_file: tfsec.sarif
+    - run: cat tfsec.sarif
+      shell: bash
     - name: Upload terrascan SARIF file
       uses: github/codeql-action/upload-sarif@v2
       with:
