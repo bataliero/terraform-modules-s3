@@ -15,7 +15,7 @@ on:
   
 jobs:
   checkov:
-    if: ${{ (!contains(fromJSON(inputs.skip), github.job)) }}
+    # if: ${{ (!contains(fromJSON(inputs.skip), github.job)) }}
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -38,7 +38,7 @@ jobs:
         sarif_file: sarif_dir/results_sarif.sarif
 
   tfsec:
-    if: ${{ (!contains(fromJSON(inputs.skip), github.job)) }}
+    # if: ${{ (!contains(fromJSON(inputs.skip), github.job)) }}
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -54,7 +54,7 @@ jobs:
         sarif_file: tfsec.sarif
 
   terrascan:
-    if: ${{ (!contains(fromJSON(inputs.skip), github.job)) }}
+    # if: ${{ (!contains(fromJSON(inputs.skip), github.job)) }}
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -69,12 +69,12 @@ jobs:
         # only_warn: true
     - name: Upload terrascan SARIF file
       uses: github/codeql-action/upload-sarif@v2
-      if: success() || failure()
+      if: ( !env.ACT && ( success() || failure() ) )
       with:
         sarif_file: terrascan.sarif
 
   regula:
-    if: ${{ (!contains(fromJSON(inputs.skip), github.job)) }}
+    # if: ${{ (!contains(fromJSON(inputs.skip), github.job)) }}
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -83,7 +83,7 @@ jobs:
       uses: fugue/regula-action@v3.2.1
   
   # tflint:
-  #   if: ${{ (!contains(fromJSON(inputs.skip), github.job)) }}
+  #   # if: ${{ (!contains(fromJSON(inputs.skip), github.job)) }}
   #   runs-on: ubuntu-latest
   #   steps:
   #   - name: Checkout
@@ -92,3 +92,13 @@ jobs:
   #     uses: github/super-linter@v5
       # env:
       #   DEFAULT_BRANCH: master
+  tflint:
+    # if: ${{ (!contains(fromJSON(inputs.skip), github.job)) }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Run the Action
+      uses: devops-infra/action-tflint@v0.3
+      with:
+        dir_filter: modules

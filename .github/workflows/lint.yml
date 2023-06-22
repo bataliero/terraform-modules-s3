@@ -22,10 +22,10 @@ jobs:
   ci-terraform:
     uses: ./.github/workflows/lint2.yaml
     # uses: cloudposse/github-actions-workflows/.github/workflows/ci-terraform.yml@main
-    with:
+    # with:
       # skip: [""]
       # skip: '["tfsec", "terrascan"]'
-      skip: '["checkov", "tfsec", "terrascan", "tfscan"]'
+      # skip: '["checkov", "tfsec", "terrascan", "tfscan"]'
 
 
   # container-test-job:
