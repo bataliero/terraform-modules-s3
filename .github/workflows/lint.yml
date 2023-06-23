@@ -8,7 +8,7 @@ permissions: write-all
 # actions: read
 
 jobs:
-  static-analysis:
+  # static-analysis:
   #   runs-on: ubuntu-latest
   #   name: Static Analysis
   #   steps:
@@ -17,6 +17,7 @@ jobs:
   #     uses: ./.github/actions/lint
   
   # ci-terraform:
+  run-tests:
     uses: ./.github/workflows/lint2.yaml
 
     # uses: cloudposse/github-actions-workflows/.github/workflows/ci-terraform.yml@main
